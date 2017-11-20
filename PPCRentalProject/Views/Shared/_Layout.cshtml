@@ -20,7 +20,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-collapse collapse">
-                
+
             </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -33,31 +33,31 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     @if (ViewBag.Title == "Home Page")
-                     { 
-                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="">@Html.ActionLink("About", "About", "Home")</li>
-                    <li class=""><a href="#portfolio">Featured</a></li>
-                    <li class=""><a href="#service">Services</a></li>
-                    <li class=""><a href="#blog">Blog</a></li>
-                    <li class=""><a href="#contact">Contact Us</a></li>
+                    {
+                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="">@Html.ActionLink("About", "About", "Home")</li>
+                        <li class=""><a href="#portfolio">Featured</a></li>
+                        <li class=""><a href="#service">Services</a></li>
+                        <li class=""><a href="#blog">Blog</a></li>
+                        <li class=""><a href="#contact">Contact Us</a></li>
                     }
-                    else if(ViewBag.Title == "About")
+                    else if (ViewBag.Title == "About")
                     {
                         <li class="">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="active">@Html.ActionLink("About", "About", "Home")</li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Featured</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Services</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Blog</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Contact Us</a></li>
+                        @*<li class=""><a style="pointer-events: none;cursor: default;">Featured</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Services</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Blog</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Contact Us</a></li>*@
                     }
                     else
                     {
                         <li class="">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="">@Html.ActionLink("About", "About", "Home")</li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Featured</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Services</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Blog</a></li>
-                        <li class=""><a style="pointer-events: none;cursor: default;">Contact Us</a></li>
+                        @*<li class=""><a style="pointer-events: none;cursor: default;">Featured</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Services</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Blog</a></li>
+                            <li class=""><a style="pointer-events: none;cursor: default;">Contact Us</a></li>*@
                     }
                     <li class=""><a href="#"> | </a></li>
                     <li class="">@Html.Partial("_LoginPartial")</li>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div>
         @RenderBody()
         <!--Page's Footer-->
