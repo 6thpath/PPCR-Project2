@@ -292,6 +292,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="img\listbg.jpg" />
     <Content Include="img\ser02.png" />
     <Content Include="img\ser01.png" />
     <Content Include="img\ser04.png" />
@@ -382,6 +383,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Project\User_ViewProjectList.cshtml" />
+    <Content Include="Views\Project\ProjectDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

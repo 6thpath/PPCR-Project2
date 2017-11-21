@@ -26,5 +26,11 @@ namespace PPCRentalProject.Controllers
             int pageNumber = (page ?? 1);
             return View(Vm.zProperties.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult ProjectDetail(int id)
+        {
+            var detail = entities.PROPERTies.FirstOrDefault(x => x.ID == id);
+            return View(detail);
+        }
     }
 }
