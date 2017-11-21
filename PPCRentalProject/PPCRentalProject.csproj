@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="contactform\contactform.js" />
@@ -318,13 +320,6 @@
     <Content Include="img\DatabaseImages\PIS_7432-Edit-stamp.jpg" />
     <Content Include="img\DatabaseImages\sunshine-benthanh-cityhome-10-stamp.jpg" />
     <Content Include="img\male.png" />
-    <Content Include="img\port01.jpg" />
-    <Content Include="img\port02.jpg" />
-    <Content Include="img\port03.jpg" />
-    <Content Include="img\port04.jpg" />
-    <Content Include="img\port05.jpg" />
-    <Content Include="img\port06.jpg" />
-    <Content Include="img\thumb.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -386,6 +381,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Project\User_ViewProjectList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
