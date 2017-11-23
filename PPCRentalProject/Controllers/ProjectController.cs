@@ -32,5 +32,24 @@ namespace PPCRentalProject.Controllers
             var detail = entities.PROPERTies.FirstOrDefault(x => x.ID == id);
             return View(detail);
         }
+
+        public ActionResult Sale_ProjectsList(int? page)
+        {
+            ViewModel Vm = new ViewModel();
+            Vm.zDistricts = entities.DISTRICTs.ToList();
+            Vm.zWards = entities.WARDs.ToList();
+            Vm.zStreets = entities.STREETs.ToList();
+            Vm.zProperties = entities.PROPERTies.ToList();
+            //var Vm = entities.PROPERTies.ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(Vm.zProperties.ToPagedList(pageNumber, pageSize));
+        }
+        
+        public ActionResult Sale_EditProject(int id)
+        {
+            var Ei = entities.PROPERTies.FirstOrDefault(x => x.ID == id);
+            return View(Ei);
+        }
     }
 }
