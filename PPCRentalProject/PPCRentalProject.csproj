@@ -384,6 +384,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Project\User_ViewProjectList.cshtml" />
     <Content Include="Views\Project\ProjectDetail.cshtml" />
+    <Content Include="Views\Project\Sale_ProjectsList.cshtml" />
+    <Content Include="Views\Project\Sale_EditProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
