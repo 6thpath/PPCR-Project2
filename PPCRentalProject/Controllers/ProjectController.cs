@@ -16,15 +16,10 @@ namespace PPCRentalProject.Controllers
         // GET: Project
         public ActionResult User_ViewProjectList(int? page)
         {
-            ViewModel Vm = new ViewModel();
-            Vm.zDistricts = entities.DISTRICTs.ToList();
-            Vm.zWards = entities.WARDs.ToList();
-            Vm.zStreets = entities.STREETs.ToList();
-            Vm.zProperties = entities.PROPERTies.ToList();
-            //var Vm = entities.PROPERTies.ToList();
+            var Vm = entities.PROPERTies.ToList();
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(Vm.zProperties.ToPagedList(pageNumber, pageSize));
+            return View(Vm.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult ProjectDetail(int id)
@@ -35,14 +30,10 @@ namespace PPCRentalProject.Controllers
 
         public ActionResult Sale_ProjectsList(int? page)
         {
-            ViewModel Vm = new ViewModel();
-            Vm.zDistricts = entities.DISTRICTs.ToList();
-            Vm.zWards = entities.WARDs.ToList();
-            Vm.zStreets = entities.STREETs.ToList();
-            Vm.zProperties = entities.PROPERTies.ToList();
+            var props = entities.PROPERTies.ToList();
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(Vm.zProperties.ToPagedList(pageNumber, pageSize));
+            return View(props.ToPagedList(pageNumber, pageSize));
         }
         
         [HttpGet]
