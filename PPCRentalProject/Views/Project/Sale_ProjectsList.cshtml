@@ -1,5 +1,4 @@
-﻿@*@model PPCRentalProject.ViewModels.ViewModel*@
-@model PagedList.IPagedList<PPCRentalProject.Models.PROPERTY>
+﻿@model PagedList.IPagedList<PPCRentalProject.Models.PROPERTY>
 @using PagedList.Mvc
 @{
     ViewBag.Title = "Projects List";
@@ -111,52 +110,50 @@
         </div>
     </div>
 
+    <!--Projects list-->
+    <hr style=" border-top:1px solid black; " />
+    <div>
+        <table style="font-family: 'Raleway', sans-serif;color:black;width:auto">
 
-    <div class="container">
-        <!--Projects list-->
-        <hr style=" border-top:1px solid black; " />
-        <div>
-            <table style="font-family: 'Raleway', sans-serif;color:black;width:auto">
-
-                @foreach (var item in Model)
+            @foreach (var item in Model)
             {
-                    <tr>
-                        <!--Avatar-->
-                        <td width="40%" style="border-right: 1px solid black;text-align:center;">
-                            <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" width="90%" />
-                            <p style="padding-top:5px;font-family: Corbel;"><i class="fa fa-check-square" aria-hidden="true"></i> @item.PROJECT_STATUS.Status_Name</p>
-                        </td>
-                        <!--Project info-->
-                        <td style="text-align:left;padding: 10px;border-bottom:1px dashed black;border-top:1px dashed black;background-color:#b7fbde">
-                            <!--Name-->
-                            <p style="font-weight:bold;font-size:20px;">@item.PropertyName</p>
-                            <hr style=" border-top:1px solid black; " />
+                <tr>
+                    <!--Avatar-->
+                    <td width="40%" style="border-right: 1px solid black;text-align:center;">
+                        <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" style="width: 90%"/>
+                        <p style="padding-top:5px;font-family: Corbel;"><i class="fa fa-check-square" aria-hidden="true"></i>@*@item.PROJECT_STATUS.Status_Name*@</p>
+                    </td>
+                    <!--Project info-->
+                    <td style="text-align:left;padding: 10px;border-bottom:1px dashed black;border-top:1px dashed black;background-color:#b7fbde">
+                        <!--Name-->
+                        <p style="font-weight:bold;font-size:20px;">@item.PropertyName</p>
+                        <hr style=" border-top:1px solid black; " />
 
-                            <!--Price and Features-->
-                            <p>
-                                <span style="font-size:18px;text-decoration:underline;">Price:</span>
-                                <span style="color: #0300ff; font-weight:bold;">@item.Price @item.UnitPrice</span>
-                                | Beds: @item.BedRoom | Baths: @item.BathRoom
-                            </p>
-                            <hr style=" border-top:1px solid black; " />
+                        <!--Price and Features-->
+                        <p>
+                            <span style="font-size:18px;text-decoration:underline;">Price:</span>
+                            <span style="color: #0300ff; font-weight:bold;">@item.Price @item.UnitPrice</span>
+                            | Beds: @item.BedRoom | Baths: @item.BathRoom
+                        </p>
+                        <hr style=" border-top:1px solid black; " />
 
-                            <!--Project type-->
-                            <p style="font-size:18px;">
-                                <span style="text-decoration:underline;">Property type:</span>
-                                <span style="color:#f00">@item.PROPERTY_TYPE.CodeType</span>
-                            </p>
-                            <!--Description-->
-                            <p style="font-size:17px;text-decoration:underline;">Description:</p>
-                            <p>
-                                @item.Content
-                            </p>
-                            <!--View Detail button-->
-                            <p>
-                                <a class="btn btn-info" href="~/Project/ProjectDetail/@item.ID/#dt" role="button">View details »</a>
-                                <a class="btn btn-danger" href="~/Project/Sale_EditProject/@item.ID/#dt" role="button">Edit »</a>
-                            </p>
-                        </td>
-                    </tr>
+                        <!--Project type-->
+                        <p style="font-size:18px;">
+                            <span style="text-decoration:underline;">Property type:</span>
+                            <span style="color:#f00">@item.PROPERTY_TYPE.CodeType</span>
+                        </p>
+                        <!--Description-->
+                        <p style="font-size:17px;text-decoration:underline;">Description:</p>
+                        <p>
+                            @item.Content
+                        </p>
+                        <!--View Detail button-->
+                        <p>
+                            <a class="btn btn-info" href="~/Project/ProjectDetail/@item.ID/#dt" role="button">View details »</a>
+                            <a class="btn btn-danger" href="~/Project/Sale_EditProject/@item.ID/#dt" role="button">Edit »</a>
+                        </p>
+                    </td>
+                </tr>
 
                     <tr>
                         <td>
@@ -164,23 +161,22 @@
                         </td>
                     </tr>
 
-                }
-            </table>
-
-            <hr style=" border-top:1px solid black; " />
-
-            <div style="text-align:center;background-color:#99f8cf">
-                @Html.PagedListPager(Model, page => Url.Action("User_ViewProjectList", new { page }))
-            </div>
-        </div>
+            }
+        </table>
 
         <hr style=" border-top:1px solid black; " />
 
-        <p style="text-align:center;color:white">
-            <button class=" btn btn-primary"><a href="javascript:void(0);" onclick="history.go(-1);" style="color:white">Back to Previous Page</a></button>
-        </p>
-
+        <div style="text-align:center;background-color:#99f8cf">
+            @Html.PagedListPager(Model, page => Url.Action("User_ViewProjectList", new { page }))
+        </div>
     </div>
+
+    <hr style=" border-top:1px solid black; " />
+
+    <p style="text-align:center;color:white">
+        <button class=" btn btn-primary"><a href="javascript:void(0);" onclick="history.go(-1);" style="color:white">Back to Previous Page</a></button>
+    </p>
+
 </div>
 
 <script type="text/javascript">
