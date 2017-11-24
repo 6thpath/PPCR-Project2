@@ -13,7 +13,7 @@ namespace PPCRentalProject.Controllers
         DemoPPCRentalEntities entities = new DemoPPCRentalEntities();
         public ActionResult Index(int? page)
         {
-            var props = entities.PROPERTies.ToList();
+            var props = entities.PROPERTies.OrderByDescending(x => x.Create_post).ToList();
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(props.ToPagedList(pageNumber, pageSize));
