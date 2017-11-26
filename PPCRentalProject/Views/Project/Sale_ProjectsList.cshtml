@@ -120,8 +120,8 @@
                 <tr>
                     <!--Avatar-->
                     <td width="40%" style="border-right: 1px solid black;text-align:center;">
-                        <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" style="width: 90%"/>
-                        <p style="padding-top:5px;font-family: Corbel;"><i class="fa fa-check-square" aria-hidden="true"></i>@*@item.PROJECT_STATUS.Status_Name*@</p>
+                        <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" style="width: 90%" />
+                        <p style="padding-top:5px;font-family: Corbel;"><i class="fa fa-check-square" aria-hidden="true"></i>@item.PROJECT_STATUS.Status_Name</p>
                     </td>
                     <!--Project info-->
                     <td style="text-align:left;padding: 10px;border-bottom:1px dashed black;border-top:1px dashed black;background-color:#b7fbde">
@@ -155,11 +155,11 @@
                     </td>
                 </tr>
 
-                    <tr>
-                        <td>
-                            <hr style=" border-top:1px solid black; " />
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <hr style=" border-top:1px solid black; " />
+                    </td>
+                </tr>
 
             }
         </table>
@@ -179,7 +179,7 @@
 
 </div>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     $(".select1").change(function () {
         if ($(this).data('options') === undefined) {
             /*Taking an array of all options-2 and kind of embedding it on the select1*/
@@ -212,4 +212,4 @@
             $('.select3').attr('disabled', false);
         }
     }
-</script>
+</script>*@
