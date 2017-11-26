@@ -68,5 +68,13 @@ namespace PPCRentalProject.Controllers
             entities.SaveChanges();
             return RedirectToAction("Sale_ProjectsList");
         }
+
+        [HttpGet]
+        public ActionResult Search(string text)
+        {
+            //    System.Threading.Thread.Sleep(2000);
+            var data = entities.PROPERTies.Where(x => x.PropertyName.Contains(text));
+            return View(data);
+        }
     }
 }

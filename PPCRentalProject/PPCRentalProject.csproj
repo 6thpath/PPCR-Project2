@@ -386,6 +386,7 @@
     <Content Include="Views\Project\ProjectDetail.cshtml" />
     <Content Include="Views\Project\Sale_ProjectsList.cshtml" />
     <Content Include="Views\Project\Sale_EditProject.cshtml" />
+    <Content Include="Views\Project\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

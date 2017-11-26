@@ -1,15 +1,10 @@
-﻿@model PagedList.IPagedList<PPCRentalProject.Models.PROPERTY>
-@using PagedList.Mvc
+﻿@model IEnumerable<PPCRentalProject.Models.PROPERTY>
+
 @{
-    ViewBag.Title = "Projects List";
-    //AjaxOptions options = new AjaxOptions
-    //{
-    //    UpdateTargetId = "searchResult",
-    //    Confirm = "Are you sure to start search?",
-    //    InsertionMode = InsertionMode.Replace,
-    //    LoadingElementId = "divLoading"
-    //};
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!--Font-->
 <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
 
@@ -25,14 +20,14 @@
                 <div class="row">
                     <div class="banner-info text-center wow fadeIn delay-05s">
                         @*<h3>Welcome to Perfect Property Company</h3>
-                            <h2 class="bnr-sub-title">Starting a new journey!!</h2>
-                            <p class="bnr-para">
-                                At PPC, We hold ourselves to the highest ethical and professional standards, and it is our goal to provide the most professional and courteous service.<br />
-                                The PPC has many qualities that make us unique. We build strong relationships with our clients by identifying and catering to their individual needs and by keeping our clients aware and informed during every step of the process.
-                            </p>
-                            <div class="overlay-detail">
-                                <a href="#"><i class="fa fa-angle-down"></i></a>
-                            </div>*@
+                        <h2 class="bnr-sub-title">Starting a new journey!!</h2>
+                        <p class="bnr-para">
+                            At PPC, We hold ourselves to the highest ethical and professional standards, and it is our goal to provide the most professional and courteous service.<br />
+                            The PPC has many qualities that make us unique. We build strong relationships with our clients by identifying and catering to their individual needs and by keeping our clients aware and informed during every step of the process.
+                        </p>
+                        <div class="overlay-detail">
+                            <a href="#"><i class="fa fa-angle-down"></i></a>
+                        </div>*@
                         <pre style="font: 10px/5px monospace;background-color:transparent;color:white;border:none">   ``` ``
    `  ``    ``   `      ``      ```         ````                ``                `   ` ` ````     `  ``  `   ``  `      `         `  
    `  ``   `     `      ``                 `  ``           ```    `               `   `  ` ```     `      `       `      `          ``
@@ -136,6 +131,7 @@
 </div>
 
 <br />
+
 <div class="container">
     <!--Filter-->
     <form class="text-center" role="search" action="@Url.Action("Search","Project")" method="get">
@@ -153,14 +149,7 @@
                 <tr>
                     <!--Avatar-->
                     <td width="40%" style="border-right: 1px solid black;text-align:center;">
-                        @*<img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" style="width: 90%" />*@
-                        <div class="portfolio-item mr-btn-15">
-                            <figure>
-                                <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive" style="width: 90%">
-                                <figcaption style="width:90%; background-color:black">
-                                </figcaption>
-                            </figure>
-                        </div>
+                        <img src="~/img/DatabaseImages/@item.Avatar" class="img-responsive img-thumbnail" style="width: 90%" />
                         <p style="padding-top:5px;font-family: Corbel;"><i class="fa fa-check-square" aria-hidden="true"></i> @item.PROJECT_STATUS.Status_Name</p>
                     </td>
                     <!--Project info-->
@@ -202,12 +191,6 @@
 
             }
         </table>
-
-        <hr style=" border-top:1px solid black; " />
-
-        <div style="text-align:center;background-color:#99f8cf">
-            @Html.PagedListPager(Model, page => Url.Action("User_ViewProjectList", new { page }))
-        </div>
     </div>
 
     <hr style=" border-top:1px solid black; " />
@@ -217,3 +200,5 @@
     </p>
 
 </div>
+
+
