@@ -11,12 +11,12 @@ namespace PPCRentalProject.Controllers
     public class HomeController : Controller
     {
         DemoPPCRentalEntities entities = new DemoPPCRentalEntities();
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
             var props = entities.PROPERTies.ToList();
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            return View(props.ToPagedList(pageNumber, pageSize));
+            //int pageSize = 6;
+            //int pageNumber = (page ?? 1);
+            return View(props/*props.ToPagedList(pageNumber, pageSize)*/);
         }
 
         public ActionResult About()
