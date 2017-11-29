@@ -1,0 +1,72 @@
+﻿@model PPCRentalProject.ViewModels.ViewModel
+
+<!--Font-->
+<link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+
+<!--css-->
+<link rel="stylesheet" href="~/Content/Site.css" />
+
+<!--Filter-->
+<div class="row">
+    <div style="width: 90%; margin: 0 auto 0; padding-top: 1%; padding-bottom: 1%;text-align:center">
+        <div id="filter" class="col-lg-12">
+            <!--Property Type-->
+            <select id="soflow">
+                <option style="font-weight:bold">Property Type</option>
+                <option>Apartment</option>
+                <option>Villa</option>
+                <option>Office</option>
+                <option>House</option>
+            </select>
+
+            <!--District-->
+            <select id="soflow" class="select1" name="select1" onchange='change2()'>
+                <option value="-1" selected disabled style="font-weight:bold">District</option>
+                @foreach (var item in Model.zDistricts)
+                    {
+                        <option value="@item.ID">@item.DistrictName</option>
+                    }
+            </select>
+            <span style="color:white; font-size:15px;">&rArr;</span>
+            <!--Ward-->
+            <select id="soflow" class="select2" name="select2" disabled onchange='change3()'>
+                <option value="-1" selected disabled style="font-weight:bold">Ward</option>
+                @foreach (var item in Model.zWards)
+                    {
+                        <option value="@item.District_ID">@item.WardName</option>
+                    }
+            </select>
+            <span style="color:white; font-size:15px;">&rArr;</span>
+            <!--Street-->
+            <select id="soflow" class="select3" name="select3" disabled>
+                <option value="-1" selected disabled style="font-weight:bold">Street</option>
+                @foreach (var item in Model.zStreets)
+                    {
+                        <option value="@item.District_ID">@item.StreetName</option>
+                    }
+            </select>
+
+            <!--Beds-->
+            <select id="soflow">
+                <option style="font-weight:bold">Beds</option>
+                <option value="0">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+            </select>
+
+            <!--Baths-->
+            <select id="soflow">
+                <option style="font-weight:bold">Baths</option>
+                <option value="0">Any</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+            </select>
+        </div>
+    </div>
+</div>
