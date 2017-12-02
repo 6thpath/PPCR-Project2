@@ -1,7 +1,9 @@
-﻿@model IEnumerable<PPCRentalProject.Models.PROPERTY>
+﻿@model PPCRentalProject.ViewModels.ViewModel
 @{
     ViewBag.Title = "Home Page";
 }
+
+<link rel="stylesheet" type="text/css" href="Content/font-awesome.min.css">
 
 <!--Page's Header-->
 <div class="header">
@@ -30,6 +32,83 @@
     </div>
 </div>
 <!---->
+<!--Filter-->
+<div class="container">
+    <div style="width: 90%; margin: 0 auto 0; padding-top: 1%; padding-bottom: 1%;text-align:center">
+        <div id="filter" class="col-lg-12">
+            <form role="search" class="text-center" action="@Url.Action("Search","Home")" method="get">
+                <!--Property Type-->
+                <select id="soflow">
+                    <option style="font-weight:bold">Property Type</option>
+                    <option>Apartment</option>
+                    <option>Villa</option>
+                    <option>Office</option>
+                    <option>House</option>
+                </select>
+
+                <!--Beds-->
+                <select id="soflow">
+                    <option style="font-weight:bold">Beds</option>
+                    <option value="0">Any</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                    <option value="5">5+</option>
+                </select>
+
+                <!--Baths-->
+                <select id="soflow">
+                    <option style="font-weight:bold">Baths</option>
+                    <option value="0">Any</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                    <option value="5">5+</option>
+                </select>
+
+                <br />
+
+                <!--District-->
+                <select id="soflow" class="select1" name="select1" onchange='change2()'>
+                    <option value="-1" selected disabled style="font-weight:bold">District</option>
+                    @foreach (var item in Model.zDistricts)
+                    {
+                        <option name="@item.ID" value="@item.ID">@item.DistrictName</option>
+                    }
+                </select>
+                <span style="color:black; font-size:15px;">&rArr;</span>
+                <!--Ward-->
+                <select id="soflow" class="select2" name="select2" disabled onchange='change3()'>
+                    <option value="-1" selected disabled style="font-weight:bold">Ward</option>
+                    @foreach (var item in Model.zWards)
+                    {
+                        <option name="@item.ID" value="@item.District_ID">@item.WardName</option>
+                    }
+                </select>
+                <span style="color:black; font-size:15px;">&rArr;</span>
+                <!--Street-->
+                <select id="soflow" class="select3" name="select3" disabled>
+                    <option value="-1" selected disabled style="font-weight:bold">Street</option>
+                    @foreach (var item in Model.zStreets)
+                    {
+                        <option name="@item.ID" value="@item.District_ID">@item.StreetName</option>
+                    }
+                </select>
+
+                <div class="form-group">
+                    <!--Keyword-->
+                    <input type="text" placeholder=" Search..." name="text" style="font-family:Corbel;border-radius:3px;border: 1px solid black;margin:10px;" />
+                    <!--Button-->
+                    <button type="submit" class="btn btn-primary" style="font-family: Corbel; font-weight:bold;margin-left:5%;border-color:white;">Search Property</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr style=" border-top:1px solid black; " />
+<!---->
 <!--Featured Project-->
 <section id="portfolio" class="section-padding wow fadeInUp delay-05s text-center">
     <div class="container">
@@ -57,7 +136,7 @@
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            @foreach (var item in Model.Take(1))
+                            @foreach (var item in Model.zProperties.Take(1))
                             {
 
                                 <div class="item active">
@@ -70,7 +149,7 @@
 
                             }
 
-                            @foreach (var item in Model.Take(4))
+                            @foreach (var item in Model.zProperties.Take(4))
                             {
 
                                 <div class="item">
@@ -85,19 +164,19 @@
                         </div>
                         <!-- Controls -->
                         @*<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>*@
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>*@
                     </div>
                 </div>
             </div>
             <!---->
             <!--6 Featured Project-->
-            @foreach (var item in Model.Take(6))
+            @foreach (var item in Model.zProperties.Take(6))
             {
                 <div class="col-md-4 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
                     <figure>
@@ -360,3 +439,39 @@
 <script src="~/Scripts/jquery.bxslider.min.js"></script>
 <script src="~/Scripts/custom.js"></script>
 <script src="~/contactform/contactform.js"></script>
+
+<script type="text/javascript">
+    $(".select1").change(function () {
+        if ($(this).data('options') === undefined) {
+            /*Taking an array of all options-2 and kind of embedding it on the select1*/
+            $(this).data('options', $('.select2 option').clone());
+        }
+        var id = $(this).val();
+        var options = $(this).data('options').filter('[value=' + id + ']');
+        $('.select2').html(options);
+        $('.select2 select').html(options).change();
+    });
+
+    $(".select2").change(function () {
+        if ($(this).data('options') === undefined) {
+            /*Taking an array of all options-3 and kind of embedding it on the select1*/
+            $(this).data('options', $('.select3 option').clone());
+        }
+        var id = $(this).val();
+        var options = $(this).data('options').filter('[value=' + id + ']');
+        $('.select3').html(options);
+    });
+
+    function change2() {
+        if ($('.select1 option:selected').length) {
+            $('.select2').attr('disabled', false);
+        }
+    }
+
+    function change3() {
+        if ($('.select2 option:selected').length) {
+            $('.select3').attr('disabled', false);
+        }
+    }
+</script>
+

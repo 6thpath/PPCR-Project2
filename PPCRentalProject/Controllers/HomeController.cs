@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PPCRentalProject.Models;
+using PPCRentalProject.ViewModels;
 
 namespace PPCRentalProject.Controllers
 {
@@ -13,10 +14,12 @@ namespace PPCRentalProject.Controllers
         DemoPPCRentalEntities entities = new DemoPPCRentalEntities();
         public ActionResult Index()
         {
-            var props = entities.PROPERTies.ToList();
-            //int pageSize = 6;
-            //int pageNumber = (page ?? 1);
-            return View(props/*props.ToPagedList(pageNumber, pageSize)*/);
+            ViewModel Vm = new ViewModel();
+            Vm.zDistricts = entities.DISTRICTs.ToList();
+            Vm.zProperties = entities.PROPERTies.ToList();
+            Vm.zStreets = entities.STREETs.ToList();
+            Vm.zWards = entities.WARDs.ToList();
+            return View(Vm);
         }
 
         public ActionResult About()
